@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosun Datta | Dynexly Team</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        iceBlue: "#A8D8F0",
+                        bgDark: "#080808",
+                        cardDark: "#111111",
+                        borderDark: "#1E1E1E",
+                        textMuted: "#4A5568",
+                        textBody: "#8899A6"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Space Grotesk", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #080808; color: #8899A6; overflow-x: hidden; scroll-behavior: smooth; }
+        .glass-header { background: rgba(8, 8, 8, 0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid #1E1E1E; }
+        .nav-link { position: relative; color: #8899A6; transition: color 0.2s; }
+        .nav-link:hover { color: #ffffff; }
+        .glass-card { background: #111111; border: 1px solid #1E1E1E; transition: border-color 0.2s; }
+        .glass-card:hover { border-color: rgba(168,216,240,0.3); }
+        .btn-primary { background: #ffffff; color: #000000; transition: all 0.2s; }
+        .btn-primary:hover { transform: scale(1.03); box-shadow: 0 0 15px rgba(168,216,240,0.4); }
+        .btn-secondary { background: transparent; color: #A8D8F0; border: 1px solid #A8D8F0; transition: all 0.2s; }
+        .btn-secondary:hover { transform: scale(1.03); box-shadow: 0 0 15px rgba(168,216,240,0.2); background: rgba(168,216,240,0.05); }
+        .divider { height: 1px; background: linear-gradient(90deg, transparent 0%, #1E1E1E 50%, transparent 100%); }
+        @media (max-width: 767px) {
+            nav {
+                background-color: transparent !important;
+                backdrop-filter: none !important;
+                border-bottom: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-iceBlue selection:text-black">
+
+    <nav class="fixed top-0 w-full h-16 glass-header z-50 flex items-center justify-between px-6 md:px-12">
+        <a href="index.html#home" class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-cardDark border border-borderDark flex items-center justify-center">
+                <span class="text-white font-display font-bold text-sm">X</span>
+            </div>
+            <span class="font-display font-bold text-white tracking-[2px] text-[16px]">DYNEXLY</span>
+        </a>
+        <div class="hidden md:flex gap-8" id="nav-links">
+            <a href="index.html#home" class="nav-link text-sm font-medium">Home</a>
+            <a href="about.html" class="nav-link text-sm font-medium">About</a>
+            <a href="index.html#research" class="nav-link text-sm font-medium">Research</a>
+            <a href="team.html" class="nav-link text-sm font-medium">Team</a>
+            <a href="join.html" class="nav-link text-sm font-medium">Join</a>
+            <a href="index.html#contact" class="nav-link text-sm font-medium">Contact</a>
+        </div>
+        <button id="mobile-toggle" class="md:hidden text-textBody hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-bgDark z-40 flex-col justify-center px-8 gap-8 hidden">
+        <button id="mobile-close" class="absolute top-5 right-6 text-textBody hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <a href="index.html#home" class="text-xl font-display text-textBody hover:text-white mobile-link">Home</a>
+        <a href="about.html" class="text-xl font-display text-textBody hover:text-white mobile-link">About</a>
+        <a href="index.html#research" class="text-xl font-display text-textBody hover:text-white mobile-link">Research</a>
+        <a href="team.html" class="text-xl font-display text-textBody hover:text-white mobile-link">Team</a>
+        <a href="join.html" class="text-xl font-display text-textBody hover:text-white mobile-link">Join</a>
+        <a href="index.html#contact" class="text-xl font-display text-textBody hover:text-white mobile-link">Contact</a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <main class="pt-24 px-6 md:px-12 max-w-7xl mx-auto min-h-screen">
+        <a href="team.html" class="inline-block mb-12 mt-8 text-iceBlue hover:text-white transition-colors">← Back to Team</a>
+        
+        <div class="glass-card p-8 md:p-16 rounded-3xl flex flex-col md:flex-row gap-12 items-start mb-24">
+            <!-- Profile Photo -->
+            <div class="w-[150px] h-[150px] shrink-0 rounded-full border-4 border-iceBlue overflow-hidden bg-borderDark flex items-center justify-center">
+                <!-- PROSUN PHOTO: Replace with Prosun Datta profile image URL -->
+                <span class="text-textMuted text-xs font-mono">PHOTO</span>
+            </div>
+            
+            <div class="flex-1">
+                <h1 class="font-display font-bold text-[28px] text-white mb-2">Prosun Datta</h1>
+                <p class="font-sans font-medium text-iceBlue mb-6">Founder & Executive Director · PIML Researcher</p>
+                
+                <!-- Social Links -->
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <a href="https://github.com/prosunkdatta" target="_blank" rel="noopener noreferrer" class="text-textMuted hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/prosunkdatta" target="_blank" rel="noopener noreferrer" class="text-textMuted hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.23 0H1.77C.79 0 0 .78 0 1.73v20.54C0 23.22.79 24 1.77 24h20.46c.98 0 1.77-.78 1.77-1.73V1.73C24 .78 23.21 0 22.23 0zM7.05 20.45H3.56V9h3.49v11.45zM5.31 7.42c-1.15 0-2.06-.93-2.06-2.07 0-1.13.91-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zm15.13 13.03h-3.48v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67h-3.49V9h3.35v1.56h.05c.47-.9 1.63-1.84 3.36-1.84 3.6 0 4.27 2.37 4.27 5.45v6.28z"/></svg>
+                    </a>
+                    <a href="https://prosunkdatta.github.io" target="_blank" rel="noopener noreferrer" class="text-textMuted hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </a>
+                    <a href="https://orcid.org/0009-0004-2557-9095" target="_blank" rel="noopener noreferrer" class="text-textMuted hover:text-white transition-colors font-mono text-sm flex items-center bg-bgDark px-3 py-1 rounded border border-borderDark">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-4.743 17.51h-2.17V6.634h2.17v10.876zm-1.085-11.968a1.32 1.32 0 01-1.32-1.32 1.32 1.32 0 011.32-1.32 1.32 1.32 0 011.32 1.32 1.32 1.32 0 01-1.32 1.32zm11.378 7.37c0 2.21-1.3 3.6-3.8 3.6h-3.41V6.634h3.36c2.56 0 3.73 1.48 3.73 3.49 0 1.25-.63 2.15-1.57 2.6.99.36 1.69 1.33 1.69 2.568zm-2.13-5.26c0-1.12-.66-1.63-1.84-1.63h-1.53v3.42h1.5c1.15 0 1.87-.56 1.87-1.79zm.18 4.88c0-1.2-.74-1.86-1.95-1.86h-1.53v3.89h1.56c1.23 0 1.92-.66 1.92-2.03z"/></svg>
+                        ORCID
+                    </a>
+                </div>
+
+                <!-- About -->
+                <h2 class="font-display text-white text-xl mb-4">About</h2>
+                <p class="text-textBody leading-relaxed mb-8">
+                    Prosun Datta is a Physics‑Informed Machine Learning researcher and the Founder & Executive Director of Dynexly. He leads the DX‑01 research project, designing physics‑guaranteed neural architectures for solar microgrid resilience in healthcare facilities. His work sits at the intersection of computational physics, deep learning, and climate‑resilient infrastructure.
+                </p>
+                
+                <!-- Skills & Expertise -->
+                <h2 class="font-display text-white text-xl mb-4">Skills & Expertise</h2>
+                <div class="flex flex-wrap gap-3 mb-8">
+                    <span class="px-4 py-2 rounded-full border border-borderDark bg-cardDark text-sm text-textBody">Physics‑Informed ML</span>
+                    <span class="px-4 py-2 rounded-full border border-borderDark bg-cardDark text-sm text-textBody">PyTorch</span>
+                    <span class="px-4 py-2 rounded-full border border-borderDark bg-cardDark text-sm text-textBody">PVLib</span>
+                    <span class="px-4 py-2 rounded-full border border-borderDark bg-cardDark text-sm text-textBody">Computational Physics</span>
+                    <span class="px-4 py-2 rounded-full border border-borderDark bg-cardDark text-sm text-textBody">LSTM/GRU</span>
+                    <span class="px-4 py-2 rounded-full border border-borderDark bg-cardDark text-sm text-textBody">NASA POWER API</span>
+                    <span class="px-4 py-2 rounded-full border border-borderDark bg-cardDark text-sm text-textBody">Open Source</span>
+                    <span class="px-4 py-2 rounded-full border border-borderDark bg-cardDark text-sm text-textBody">Research Leadership</span>
+                </div>
+
+                <!-- Research & Work -->
+                <h2 class="font-display text-white text-xl mb-4">Research & Work at Dynexly</h2>
+                <p class="text-textBody leading-relaxed">
+                     Leading the technical direction for Dynexly, Prosun architects the primary logic of DX-01. His work aims to synthesize real-world meteorological conditions with neural solvers to ensure open-source simulation tools accurately represent system performance, particularly aiding infrastructure planning in South Asia's monsoon climate.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#040404] border-t border-borderDark py-16 px-6 md:px-12 font-sans font-medium text-sm mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-16 md:gap-8">
+            <!-- Left Section: Logo & main links -->
+            <div class="flex flex-col gap-6 md:w-1/3">
+                <a href="index.html#home" class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 bg-cardDark border border-borderDark flex items-center justify-center">
+                        <span class="text-white font-display font-bold text-sm">X</span>
+                    </div>
+                    <span class="font-display font-bold text-white tracking-[2px] text-[16px]">DYNEXLY</span>
+                </a>
+                
+                <div class="flex flex-col gap-4 text-textBody">
+                    <a href="about.html" class="hover:text-white transition-colors">About</a>
+                    <a href="index.html#research" class="hover:text-white transition-colors">Research Outputs</a>
+                    <a href="team.html" class="hover:text-white transition-colors">View Team</a>
+                    <a href="join.html" class="hover:text-white transition-colors">Open Roles</a>
+                    <a href="index.html#contact" class="hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+
+            <!-- Middle Section: More ways to explore -->
+            <div class="flex flex-col gap-6 md:w-1/3">
+                <h4 class="font-bold text-textMuted mt-1 mb-2">More ways to explore</h4>
+                <div class="flex flex-col gap-4 text-textBody">
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">GitHub Repository</a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">Publications</a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">Dataset Access</a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">Donate to the Lab</a>
+                </div>
+            </div>
+
+            <!-- Right Section: Social & Address -->
+            <div class="flex flex-col gap-8 md:w-1/3 md:items-end text-left md:text-right">
+                <!-- Social Icons -->
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <a href="https://github.com/dynexlylab" target="_blank" class="hover:text-white transition-colors"></a>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+                    </a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>
+                    </a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4 19.14c0 1.58-1.28 2.86-2.86 2.86S-1.72 20.72-1.72 19.14 1.28 16.29 2.86 16.29 4 17.56 4 19.14zM-1.72 9.53v3.75c4.76 0 8.63 3.86 8.63 8.63h3.75C10.66 15.06 5.14 9.53-1.72 9.53zm0-9.53V3.75c10.08 0 18.25 8.16 18.25 18.25h3.75C20.28 9.85 9.87 0-1.72 0z" transform="translate(1.72 0)"/></svg>
+                    </a>
+                </div>
+
+                <!-- Lab Info underneath -->
+                <div class="flex flex-col gap-1.5 text-textBody">
+                    <span class="text-white">Dynexly Research Collective</span>
+                    <span>Sylhet, Bangladesh</span>
+                </div>
+
+                <div class="flex flex-col gap-1.5 text-textMuted mt-2 md:mt-auto">
+                    <span>Accessibility</span>
+                    <span>© 2026 Dynexly. Dynamic Neural Exploration Lab for Youth.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById("mobile-menu");
+        const toggleBtn = document.getElementById("mobile-toggle");
+        const closeBtn = document.getElementById("mobile-close");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle("hidden");
+            mobileMenu.classList.toggle("flex");
+            document.body.style.overflow = mobileMenu.classList.contains("flex") ? "hidden" : "";
+        }
+
+        if(toggleBtn) toggleBtn.addEventListener("click", toggleMenu);
+        if(closeBtn) closeBtn.addEventListener("click", toggleMenu);
+        mobileLinks.forEach(l => l.addEventListener("click", toggleMenu));
+    </script>
+</body>
+</html>

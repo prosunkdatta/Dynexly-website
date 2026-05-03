@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynexly | Neural Exploration for Real Impact</title>
+    <!-- Logo Placeholder -->
+    <!-- <link rel="icon" href="favicon.ico" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        iceBlue: "#A8D8F0",
+                        bgDark: "#080808",
+                        cardDark: "#111111",
+                        borderDark: "#1E1E1E",
+                        textMuted: "#4A5568",
+                        textBody: "#8899A6"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Space Grotesk", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #080808; color: #8899A6; overflow-x: hidden; scroll-behavior: smooth; }
+        .glass-header { background: rgba(8, 8, 8, 0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid #1E1E1E; }
+        .nav-link { position: relative; color: #8899A6; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: #ffffff; }
+        .nav-link.active::after { content: ""; position: absolute; bottom: -22px; left: 0; width: 100%; height: 2px; background-color: #A8D8F0; }
+        .glass-card { background: #111111; border: 1px solid #1E1E1E; transition: border-color 0.2s; }
+        .glass-card:hover { border-color: rgba(168,216,240,0.3); }
+        .btn-primary { background: #ffffff; color: #000000; transition: all 0.2s; }
+        .btn-primary:hover { transform: scale(1.03); box-shadow: 0 0 15px rgba(168,216,240,0.4); }
+        .btn-secondary { background: transparent; color: #A8D8F0; border: 1px solid #A8D8F0; transition: all 0.2s; }
+        .btn-secondary:hover { transform: scale(1.03); box-shadow: 0 0 15px rgba(168,216,240,0.2); background: rgba(168,216,240,0.05); }
+        .divider { height: 1px; background: linear-gradient(90deg, transparent 0%, #1E1E1E 50%, transparent 100%); }
+        @media (max-width: 767px) {
+            nav {
+                background-color: transparent !important;
+                backdrop-filter: none !important;
+                border-bottom: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-iceBlue selection:text-black">
+
+    <nav class="fixed top-0 w-full h-16 glass-header z-50 flex items-center justify-between px-6 md:px-12">
+        <a href="#home" class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-cardDark border border-borderDark flex items-center justify-center">
+                <span class="text-white font-display font-bold text-sm">X</span>
+            </div>
+            <span class="font-display font-bold text-white tracking-[2px] text-[16px]">DYNEXLY</span>
+        </a>
+        <div class="hidden md:flex gap-8" id="nav-links">
+            <a href="index.html" class="nav-link active text-sm font-medium">Home</a>
+            <a href="about.html" class="nav-link text-sm font-medium">About</a>
+            <a href="research.html" class="nav-link text-sm font-medium">Research</a>
+            <a href="team.html" class="nav-link text-sm font-medium">Team</a>
+            <a href="join.html" class="nav-link text-sm font-medium">Join</a>
+            <a href="contact.html" class="nav-link text-sm font-medium">Contact</a>
+        </div>
+        <button id="mobile-toggle" class="md:hidden text-textBody hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-bgDark z-40 flex-col justify-center px-8 gap-8 hidden">
+        <button id="mobile-close" class="absolute top-5 right-6 text-textBody hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <a href="index.html" class="text-xl font-display text-textBody hover:text-white mobile-link">Home</a>
+        <a href="about.html" class="text-xl font-display text-textBody hover:text-white mobile-link">About</a>
+        <a href="research.html" class="text-xl font-display text-textBody hover:text-white mobile-link">Research</a>
+        <a href="team.html" class="text-xl font-display text-textBody hover:text-white mobile-link">Team</a>
+        <a href="join.html" class="text-xl font-display text-textBody hover:text-white mobile-link">Join</a>
+        <a href="contact.html" class="text-xl font-display text-textBody hover:text-white mobile-link">Contact</a>
+    </div>
+
+    <!-- MAIN SECTIONS GO HERE -->
+    <main>
+        <section id="home" class="min-h-screen flex flex-col justify-center pt-24 md:pt-16 px-6 md:px-12 max-w-7xl mx-auto relative overflow-hidden">
+            <div class="flex flex-col w-full">
+                <div class="max-w-3xl z-10 w-full relative">
+                    <div class="w-[100vw] -ml-6 px-6 md:w-full md:ml-0 md:px-5 h-[100px] md:h-[120px] mb-6 md:mb-8 pointer-events-none">
+                        <canvas id="kg-canvas" class="w-full h-full"></canvas>
+                    </div>
+                    <h1 class="font-display font-bold text-[40px] md:text-[64px] text-white leading-tight mb-6">Neural Exploration for Real Impact.</h1>
+                    <p class="text-[18px] text-textBody max-w-[580px] mb-10 leading-relaxed text-balance">A youth-led, physics-informed machine learning research collective studying solar microgrid <span id="highlight-word" class="inline-block transition-colors duration-300">resilience</span> for healthcare in monsoon regions.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="research.html" class="btn-primary px-8 py-3 rounded-md text-sm text-center font-medium">Explore Our Research</a>
+                        <a href="join.html" class="btn-secondary px-8 py-3 rounded-md text-sm text-center font-medium">Join Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto what-we-do-container">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Research Card -->
+                <div class="glass-card p-8 rounded-lg">
+                    <svg class="w-8 h-8 text-iceBlue mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    <h3 class="font-display text-white text-xl mb-3">Research</h3>
+                    <p class="text-sm leading-relaxed">We leverage Physics-Informed Neural Networks to model and optimize energy systems in harsh climates.</p>
+                </div>
+                <!-- Build Card -->
+                <div class="glass-card p-8 rounded-lg">
+                    <svg class="w-8 h-8 text-iceBlue mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <h3 class="font-display text-white text-xl mb-3">Build</h3>
+                    <p class="text-sm leading-relaxed">Open-source models, simulations, and tools built for resilience and distributed access.</p>
+                </div>
+                <!-- Deploy Card -->
+                <div class="glass-card p-8 rounded-lg">
+                    <svg class="w-8 h-8 text-iceBlue mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="font-display text-white text-xl mb-3">Deploy</h3>
+                    <p class="text-sm leading-relaxed">Translating research into practical, open-source software structures for immediate impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Banner -->
+        <section class="border-y border-borderDark bg-[#0a0a0a] py-6 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-textMuted tracking-wider font-mono gap-4 text-center md:text-left">
+                <span>Admire The Nature</span>
+                <span class="hidden md:inline">·</span>
+                <span>Love The Universe</span>
+                <span class="hidden md:inline">·</span>
+                <span>Respect The Process</span>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto flex flex-col items-center text-center">
+            <h2 class="font-display text-3xl md:text-4xl text-white mb-6">About Dynexly</h2>
+            <p class="text-base text-textBody max-w-2xl mb-8 leading-relaxed">
+                We are a youth-led international non-profit research collective using physics-informed AI to solve critical infrastructure challenges.
+            </p>
+            <a href="about.html" class="btn-secondary px-8 py-3 rounded-md text-sm text-center font-medium">Learn more about us →</a>
+        </section>
+
+        <section id="research" class="py-24 px-6 md:px-12 max-w-7xl mx-auto scroll-mt-16 bg-[#0a0a0a] rounded-3xl mb-24 border border-borderDark flex flex-col items-center text-center">
+            <h2 class="font-display text-3xl md:text-4xl text-white mb-6">Explore Our Research</h2>
+            <p class="text-base text-textBody max-w-2xl mb-8 leading-relaxed">
+                Discover our methodology, dual-output pipeline, and the physics-informed tools we are building for global climate resilience.
+            </p>
+            <a href="research.html" class="btn-primary px-8 py-3 rounded-md text-sm text-center font-medium">View Research Outputs →</a>
+        </section>
+
+        <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-borderDark flex flex-col items-center text-center">
+            <h2 class="font-display text-3xl md:text-4xl text-white mb-6">Our Team</h2>
+            <p class="text-base text-textBody max-w-2xl mb-8 leading-relaxed">
+                Prosun Datta (Founder & Executive Director) and Dipto Singha (Co-Founder & COO) lead Dynexly’s research and operations.
+            </p>
+            <a href="team.html" class="btn-secondary px-8 py-3 rounded-md text-sm text-center font-medium">Meet the full team →</a>
+        </section>
+
+        <section id="join" class="py-24 px-6 md:px-12 max-w-7xl mx-auto scroll-mt-16 border-t border-borderDark">
+             <div class="max-w-3xl mb-12">
+                <h2 class="font-display text-3xl md:text-4xl text-white mb-6">Join the Lab</h2>
+                <p class="text-base leading-relaxed">We are actively seeking passionate researchers, engineers, and designers to contribute to our mission. Explore open roles or submit a general application.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div class="glass-card p-6 rounded-lg flex flex-col h-full">
+                    <h3 class="font-display text-white text-lg mb-2">ML Researcher</h3>
+                    <p class="text-xs text-iceBlue mb-4">Remote / Volunteer</p>
+                    <p class="text-sm leading-relaxed mb-6 flex-grow">Focus on physics-informed neural network architectures. PyTorch experience required.</p>
+                    <a href="join.html" class="text-sm text-white hover:text-iceBlue underline decoration-borderDark underline-offset-4">Apply Now →</a>
+                </div>
+                <div class="glass-card p-6 rounded-lg flex flex-col h-full">
+                    <h3 class="font-display text-white text-lg mb-2">Software Engineer</h3>
+                    <p class="text-xs text-iceBlue mb-4">Remote / Volunteer</p>
+                    <p class="text-sm leading-relaxed mb-6 flex-grow">Build the open-source platforms and tools that deploy our research models.</p>
+                    <a href="join.html" class="text-sm text-white hover:text-iceBlue underline decoration-borderDark underline-offset-4">Apply Now →</a>
+                </div>
+                <div class="glass-card p-6 rounded-lg flex flex-col h-full">
+                    <h3 class="font-display text-white text-lg mb-2">Operations Lead</h3>
+                    <p class="text-xs text-iceBlue mb-4">Sylhet / Volunteer</p>
+                    <p class="text-sm leading-relaxed mb-6 flex-grow">Assist with local partnerships and facility data collection coordination.</p>
+                    <a href="join.html" class="text-sm text-white hover:text-iceBlue underline decoration-borderDark underline-offset-4">Apply Now →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 px-6 md:px-12 max-w-7xl mx-auto scroll-mt-16 bg-cardDark rounded-t-3xl border border-b-0 border-borderDark">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="font-display text-3xl md:text-4xl text-white mb-6">Contact Us</h2>
+                    <p class="text-base leading-relaxed mb-8">Interested in our research, partnerships, or joining the collective? Get in touch.</p>
+                    
+                    <div class="mb-8">
+                        <p class="text-sm text-textMuted mb-2">Email</p>
+                        <a href="mailto:hello@dynexly.org" class="text-white hover:text-iceBlue transition-colors font-mono">hello@dynexly.org</a>
+                    </div>
+                </div>
+
+                <form class="flex flex-col gap-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Name" class="bg-bgDark border border-borderDark rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-iceBlue transition-colors w-full">
+                        <input type="email" placeholder="Email" class="bg-bgDark border border-borderDark rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-iceBlue transition-colors w-full">
+                    </div>
+                    <input type="text" placeholder="Subject" class="bg-bgDark border border-borderDark rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-iceBlue transition-colors w-full">
+                    <textarea placeholder="Message" rows="4" class="bg-bgDark border border-borderDark rounded px-4 py-3 text-sm text-white focus:outline-none focus:border-iceBlue transition-colors w-full resize-none"></textarea>
+                    <button type="button" class="btn-primary w-full py-3 rounded-md text-sm font-medium mt-2">Send Message</button>
+                    <p class="text-xs text-textMuted text-center mt-2">Form submission is currently a placeholder.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#040404] border-t border-borderDark py-16 px-6 md:px-12 font-sans font-medium text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-16 md:gap-8">
+            
+            <!-- Left Section: Logo & main links -->
+            <div class="flex flex-col gap-6 md:w-1/3">
+                <a href="#home" class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 bg-cardDark border border-borderDark flex items-center justify-center">
+                        <span class="text-white font-display font-bold text-sm">X</span>
+                    </div>
+                    <span class="font-display font-bold text-white tracking-[2px] text-[16px]">DYNEXLY</span>
+                </a>
+                
+                <div class="flex flex-col gap-4 text-textBody">
+                    <a href="about.html" class="hover:text-white transition-colors">About</a>
+                    <a href="research.html" class="hover:text-white transition-colors">Research Outputs</a>
+                    <a href="team.html" class="hover:text-white transition-colors">View Team</a>
+                    <a href="join.html" class="hover:text-white transition-colors">Open Roles</a>
+                    <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+
+            <!-- Middle Section: More ways to explore -->
+            <div class="flex flex-col gap-6 md:w-1/3">
+                <h4 class="font-bold text-textMuted mt-1 mb-2">More ways to explore</h4>
+                <div class="flex flex-col gap-4 text-textBody">
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">GitHub Repository</a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">Publications</a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">Dataset Access</a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">Donate to the Lab</a>
+                </div>
+            </div>
+
+            <!-- Right Section: Social & Address -->
+            <div class="flex flex-col gap-8 md:w-1/3 md:items-end text-left md:text-right">
+                <!-- Social Icons -->
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <a href="https://github.com/dynexlylab" target="_blank" class="hover:text-white transition-colors"></a>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+                    </a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>
+                    </a>
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <!-- RSS Icon -->
+                    <a href="#" target="_blank" class="hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4 19.14c0 1.58-1.28 2.86-2.86 2.86S-1.72 20.72-1.72 19.14 1.28 16.29 2.86 16.29 4 17.56 4 19.14zM-1.72 9.53v3.75c4.76 0 8.63 3.86 8.63 8.63h3.75C10.66 15.06 5.14 9.53-1.72 9.53zm0-9.53V3.75c10.08 0 18.25 8.16 18.25 18.25h3.75C20.28 9.85 9.87 0-1.72 0z" transform="translate(1.72 0)"/></svg>
+                    </a>
+                </div>
+
+                <!-- Lab Info underneath -->
+                <div class="flex flex-col gap-1.5 text-textBody">
+                    <span class="text-white">Dynexly Research Collective</span>
+                    <span>Sylhet, Bangladesh</span>
+                </div>
+
+                <div class="flex flex-col gap-1.5 text-textMuted mt-2 md:mt-auto">
+                    <span>Accessibility</span>
+                    <span>© 2026 Dynexly. Dynamic Neural Exploration Lab for Youth.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Logic -->
+    <script>
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Active Link Highlighting
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").substring(1) === current) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById("mobile-menu");
+        const toggleBtn = document.getElementById("mobile-toggle");
+        const closeBtn = document.getElementById("mobile-close");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle("hidden");
+            mobileMenu.classList.toggle("flex");
+            document.body.style.overflow = mobileMenu.classList.contains("flex") ? "hidden" : "";
+        }
+
+        toggleBtn.addEventListener("click", toggleMenu);
+        closeBtn.addEventListener("click", toggleMenu);
+        mobileLinks.forEach(l => l.addEventListener("click", toggleMenu));
+
+        // Stats Counter
+        const counterElement = document.getElementById("researcher-count");
+        if (counterElement) {
+            let counted = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !counted) {
+                    counted = true;
+                    let startTimestamp = null;
+                    const duration = 1500;
+                    const finalValue = 30;
+
+                    const step = (timestamp) => {
+                        if (!startTimestamp) startTimestamp = timestamp;
+                        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                        // easeOutQuart
+                        const ease = 1 - Math.pow(1 - progress, 4);
+                        counterElement.innerText = Math.floor(ease * finalValue);
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        } else {
+                            counterElement.innerText = finalValue;
+                        }
+                    };
+                    window.requestAnimationFrame(step);
+                }
+            }, { threshold: 0.5 });
+
+            observer.observe(counterElement);
+        }
+
+        // GSAP Animations
+        // ----------------------------------------------------
+        // Word Highlight (Farm Africa style)
+        ScrollTrigger.create({
+            trigger: "#home",
+            start: "top top",
+            end: "bottom center",
+            onEnter: () => gsap.to("#highlight-word", { color: "#A8D8F0", scale: 1.05, textShadow: "0 0 10px rgba(168,216,240,0.5)", duration: 0.4, yoyo: true, repeat: 1 })
+        });
+
+        // Card Fade-Ups
+        const cardRevealConfig = {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.15
+        };
+
+        const sectionsToAnimate = [
+            { selector: ".what-we-do-container .glass-card", trigger: ".what-we-do-container" },
+            { selector: "#about .grid:first-of-type .glass-card", trigger: "#about .grid" },
+            { selector: "#research > .glass-card", trigger: "#research > .glass-card" }, // Flagsip DX-01
+            { selector: "#team .grid .glass-card", trigger: "#team .grid" }
+        ];
+
+        sectionsToAnimate.forEach(({ selector, trigger }) => {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length > 0) {
+                gsap.from(elements, {
+                    scrollTrigger: {
+                        trigger: trigger,
+                        start: "top 85%",
+                        once: true
+                    },
+                    ...cardRevealConfig
+                });
+            }
+        });
+
+        // Knowledge Graph Canvas
+        // ----------------------------------------------------
+        const kgCanvas = document.getElementById("kg-canvas");
+        if (kgCanvas) {
+            const kgCtx = kgCanvas.getContext("2d");
+            
+            function resizeCanvas() {
+                const rect = kgCanvas.parentElement.getBoundingClientRect();
+                kgCanvas.width = rect.width * 2;
+                kgCanvas.height = rect.height * 2;
+                kgCtx.scale(2, 2);
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            const kgNodeCount = window.innerWidth < 768 ? 5 : 18;
+            const kgNodes = [];
+            
+            for (let i = 0; i < kgNodeCount; i++) {
+                kgNodes.push({
+                    baseX: Math.random(),
+                    baseY: Math.random(),
+                    offsetSpeedX: Math.random() * 0.001 + 0.0005,
+                    offsetSpeedY: Math.random() * 0.001 + 0.0005,
+                    pulseSpeed: Math.random() * 0.002 + 0.001,
+                    size: Math.random() * 1.5 + 1.2,
+                    isIceBlue: Math.random() > 0.6
+                });
+            }
+
+            function animateKG(time) {
+                const w = kgCanvas.width / 2;
+                const h = kgCanvas.height / 2;
+                kgCtx.clearRect(0, 0, w, h);
+                
+                kgNodes.forEach(n => {
+                    n.x = n.baseX * w + Math.sin(time * n.offsetSpeedX) * 15;
+                    n.y = n.baseY * h + Math.cos(time * n.offsetSpeedY) * 15;
+                    n.currentSize = n.size + Math.sin(time * n.pulseSpeed) * 0.5;
+                });
+
+                kgCtx.lineWidth = 0.5;
+                for (let i = 0; i < kgNodes.length; i++) {
+                    for (let j = i + 1; j < kgNodes.length; j++) {
+                        const dx = kgNodes[i].x - kgNodes[j].x;
+                        const dy = kgNodes[i].y - kgNodes[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (dist < 180) {
+                            const opacity = Math.max(0, 0.3 * (1 - dist / 180));
+                            const isBright = Math.random() < 0.002;
+                            kgCtx.strokeStyle = isBright ? `rgba(168,216,240, 0.7)` : `rgba(255,255,255, ${opacity})`;
+                            kgCtx.beginPath();
+                            kgCtx.moveTo(kgNodes[i].x, kgNodes[i].y);
+                            kgCtx.lineTo(kgNodes[j].x, kgNodes[j].y);
+                            kgCtx.stroke();
+                        }
+                    }
+                }
+
+                kgNodes.forEach(n => {
+                    kgCtx.fillStyle = n.isIceBlue ? "#A8D8F0" : "#FFFFFF";
+                    kgCtx.shadowBlur = 6;
+                    kgCtx.shadowColor = n.isIceBlue ? "rgba(168,216,240,0.6)" : "rgba(255,255,255,0.6)";
+                    kgCtx.beginPath();
+                    kgCtx.arc(n.x, n.y, Math.max(0.1, n.currentSize), 0, Math.PI * 2);
+                    kgCtx.fill();
+                    kgCtx.shadowBlur = 0;
+                });
+
+                requestAnimationFrame(animateKG);
+            }
+            requestAnimationFrame(animateKG);
+        }
+    </script>
+</body>
+</html>
+
