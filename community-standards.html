@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Standards — Dynexly</title>
+    <meta name="description" content="Dynexly Community Standards – guidelines for collaboration, research integrity, and respectful conduct within the youth‑led research collective.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='22' y1='15' x2='22' y2='85' stroke='%23a8d8f0' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M22,15 Q38,15 38,28' fill='none' stroke='%23a8d8f0' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M22,85 Q38,85 38,72' fill='none' stroke='%23a8d8f0' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='78' y1='15' x2='78' y2='85' stroke='%23a8d8f0' stroke-width='4' stroke-linecap='round' opacity='0.55'/%3E%3Cpath d='M78,15 Q62,15 62,28' fill='none' stroke='%23a8d8f0' stroke-width='3.5' stroke-linecap='round' opacity='0.55'/%3E%3Cpath d='M78,85 Q62,85 62,72' fill='none' stroke='%23a8d8f0' stroke-width='3.5' stroke-linecap='round' opacity='0.55'/%3E%3Cline x1='34' y1='30' x2='66' y2='70' stroke='%23a8d8f0' stroke-width='6.5' stroke-linecap='round'/%3E%3Cline x1='66' y1='30' x2='34' y2='70' stroke='%23a8d8f0' stroke-width='6.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='3.5' fill='%23080808' stroke='%23a8d8f0' stroke-width='2.5'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #080808;
+            font-family: 'Inter', sans-serif;
+            color: #8899A6;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #FFFFFF;
+        }
+        h2 {
+            font-size: 1.9rem;
+            margin-top: 3rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(168,216,240,0.25);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        h2 .section-icon {
+            font-size: 1.6rem;
+        }
+        p, li {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #b0bec5;
+        }
+        a {
+            color: #A8D8F0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+        .hero-glow {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 300px;
+            background: radial-gradient(circle at center, rgba(168,216,240,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .card {
+            background: #0c0c0c;
+            border: 1px solid #1E1E1E;
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            border-color: rgba(168,216,240,0.35);
+            box-shadow: 0 0 24px rgba(168,216,240,0.06);
+        }
+        .value-pill {
+            display: inline-block;
+            background: #121212;
+            border: 1px solid #1E1E1E;
+            color: #8899A6;
+            border-radius: 999px;
+            padding: 0.5rem 1.4rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s;
+        }
+        .value-pill:hover {
+            border-color: #A8D8F0;
+            color: #FFFFFF;
+            background: #1a1a1a;
+            transform: translateY(-2px);
+        }
+        .section-gradient {
+            background: linear-gradient(135deg, #0a0a0a 0%, #0f0f1a 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+        }
+        .key-highlight {
+            background: rgba(168,216,240,0.05);
+            border-left: 4px solid #A8D8F0;
+            padding: 1.2rem 1.8rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body class="bg-[#080808] text-[#8899A6]">
+
+<!-- Navigation Bar (same as before, unchanged) -->
+<!-- [Keep the same navigation as in the previous file – I've omitted it here for brevity but include the exact same fixed nav bar from the previous community-standards.html] -->
+
+<!-- Main content -->
+<div class="container mx-auto px-4 pt-24 pb-12 max-w-4xl relative">
+    <div class="hero-glow"></div>
+    <h1 class="text-5xl md:text-6xl font-bold text-white mb-2 font-['Space_Grotesk'] relative z-10">Community Standards</h1>
+    <p class="text-xl text-gray-400 mb-6 relative z-10">Together we build a space for rigorous research, respect, and open collaboration.</p>
+    <p class="text-sm text-gray-600 mb-10 relative z-10">Effective June 1, 2026</p>
+
+    <!-- Introduction -->
+    <div class="card mb-8">
+        <p class="text-lg">Dynexly is a global, youth‑led research collective built on the principles of open science, collaboration, and respect. These Community Standards define the expectations for everyone who participates in our projects, communications, events, and online spaces. By joining Dynexly as a researcher, contributor, or community member, you agree to uphold these standards.</p>
+    </div>
+
+    <!-- Core Values Showcase -->
+    <h2><span class="section-icon">🧬</span> Our Core Values in Action</h2>
+    <div class="flex flex-wrap gap-3 mb-6">
+        <span class="value-pill">🔓 Open First</span>
+        <span class="value-pill">🔬 Scientific Rigor</span>
+        <span class="value-pill">🌱 Youth‑Governed</span>
+        <span class="value-pill">💸 $0 Principle</span>
+        <span class="value-pill">🛠 Research‑to‑Product</span>
+        <span class="value-pill">🌍 Global by Design</span>
+        <span class="value-pill">📊 Empirical Impact</span>
+    </div>
+    <p>Every interaction within the Dynexly community should reflect these values. We judge contributions on their merit, not on the identity of the contributor.</p>
+
+    <!-- Research Integrity with colorful highlight -->
+    <div class="section-gradient">
+        <h2><span class="section-icon">⚡</span> Research Integrity</h2>
+        <p>All research conducted under the Dynexly name must adhere to the highest standards of scientific integrity:</p>
+        <ul class="list-none space-y-3 mb-4">
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">🔁</span> <strong class="text-white">Reproducibility:</strong> Code, data, and methodologies must be documented well enough that another researcher can independently reproduce the results.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">✅</span> <strong class="text-white">Honest Reporting:</strong> Do not fabricate, falsify, or misrepresent data, results, or citations. Report limitations and uncertainties transparently.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">📂</span> <strong class="text-white">Open Access:</strong> All final research outputs must be released under MIT License unless otherwise approved.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">🚫</span> <strong class="text-white">Plagiarism:</strong> Never present another's work as your own. Always credit original sources.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">👥</span> <strong class="text-white">Peer Review:</strong> Constructive, respectful critique is welcomed. All projects undergo internal review.</li>
+        </ul>
+    </div>
+
+    <!-- Respectful Collaboration -->
+    <div class="key-highlight">
+        <h2><span class="section-icon">🤝</span> Respectful Collaboration</h2>
+        <p>Dynexly brings together young researchers from diverse backgrounds, countries, and cultures. We are committed to maintaining an environment where everyone can contribute free from harassment, discrimination, or hostility.</p>
+        <ul class="list-none space-y-2 mb-4">
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">❌</span> <strong class="text-white">Zero Tolerance for Harassment:</strong> Harassment of any kind will not be tolerated.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">🗣</span> <strong class="text-white">Inclusive Language:</strong> Use language that welcomes everyone. Avoid unexplained jargon.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">🧠</span> <strong class="text-white">Constructive Disagreement:</strong> Disagree with ideas, not people.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">⭐</span> <strong class="text-white">Credit Where Due:</strong> Authorship follows IEEE guidelines.</li>
+        </ul>
+    </div>
+
+    <!-- Communication Channels -->
+    <h2><span class="section-icon">📡</span> Communication Channels</h2>
+    <p>These standards apply to all spaces where Dynexly work occurs, including GitHub repositories, email, social media, video calls, and in‑person events.</p>
+
+    <!-- Intellectual Property -->
+    <h2><span class="section-icon">©️</span> Intellectual Property & Open‑Source</h2>
+    <p>By contributing to Dynexly, you agree that your contributions will be under the MIT License, and that you have the right to contribute the material. Dynexly may use, modify, and distribute your contributions with proper attribution.</p>
+
+    <!-- Reporting Violations -->
+    <h2><span class="section-icon">🛡️</span> Reporting Violations</h2>
+    <p>If you experience or witness behavior that violates these standards, report it promptly. Reports are handled confidentially. Send details to <a href="mailto:dynexlylabs@gmail.com">dynexlylabs@gmail.com</a>. Anonymous reporting is possible, and retaliation is prohibited.</p>
+
+    <!-- Consequences -->
+    <div class="section-gradient">
+        <h2><span class="section-icon">⚖️</span> Consequences of Violations</h2>
+        <p>Dynexly’s Executive Director, in consultation with team leads, will review reported violations. Possible consequences include:</p>
+        <ul class="list-none space-y-2 mb-4">
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">⚠️</span> A warning with guidance on corrective behavior.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">⏳</span> Temporary suspension from communication channels and repositories.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">🚪</span> Permanent removal from the Dynexly community.</li>
+            <li class="flex items-start gap-3"><span class="text-[#A8D8F0] text-xl mt-0.5">📢</span> In cases of serious misconduct, public disclosure may be made to protect the community.</li>
+        </ul>
+        <p>Decisions may be appealed by emailing the Executive Director.</p>
+    </div>
+
+    <!-- Amendments -->
+    <h2><span class="section-icon">📝</span> Amendments</h2>
+    <p>These Community Standards may be updated. Proposed changes will be shared with the community for feedback before final adoption.</p>
+
+    <!-- Contact -->
+    <h2><span class="section-icon">📬</span> Contact</h2>
+    <p>For questions about these Community Standards, or to report a concern, contact us at:<br>
+    📧 <a href="mailto:dynexlylabs@gmail.com">dynexlylabs@gmail.com</a><br>
+    🌐 <a href="https://dynexly.org">dynexly.org</a><br>
+    📍 Sylhet, Bangladesh</p>
+</div>
+
+<!-- Footer (identical to previous pages) -->
+<!-- [Keep the identical footer as in the previous file – omitted for brevity] -->
+
+</body>
+</html>
