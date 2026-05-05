@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://prosunkdatta.github.io/Dynexly-website/sitemap.xml
+
+User-agent: GPTBot
+Disallow: /

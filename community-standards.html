@@ -99,6 +99,24 @@
             border-radius: 0 12px 12px 0;
             margin: 2rem 0;
         }
+        /* Subtle graph‑paper grid for all pages */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                /* vertical lines */
+                linear-gradient(to right, rgba(255, 255, 255, 0.04) 0.5px, transparent 0.5px),
+                /* horizontal lines */
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 0.5px, transparent 0.5px);
+            background-size: 60px 60px;
+            background-position: center center;
+        }
     </style>
 </head>
 <body class="bg-[#080808] text-[#8899A6]">
