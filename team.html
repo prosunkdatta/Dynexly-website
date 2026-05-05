@@ -192,10 +192,10 @@
             <div class="flex flex-col gap-5 md:w-1/3">
                 <h4 class="font-bold text-textMuted mt-1 mb-1">Our terms and policies</h4>
                 <div class="flex flex-col gap-3 text-textBody">
-                    <a href="community-standards.html" target="_blank" class="hover:text-white transition-colors">Community standards</a>
-                    <a href="privacy-policy.html" target="_blank" class="hover:text-white transition-colors">Privacy policy</a>
-                    <a href="terms.html" target="_blank" class="hover:text-white transition-colors">Terms</a>
-                    <a href="sitemap.html" target="_blank" class="hover:text-white transition-colors">Site map</a>
+                    <a href="community-standards.html" class="hover:text-white transition-colors">Community standards</a>
+<a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy policy</a>
+<a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+<a href="sitemap.html" class="hover:text-white transition-colors">Site map</a>
                 </div>
             </div>
             <div class="flex flex-col gap-6 md:w-1/3 md:items-end text-left md:text-right">
@@ -217,20 +217,6 @@
         </div>
     </footer>
 
-    <script>
-        const mobileMenu = document.getElementById("mobile-menu");
-        const toggleBtn = document.getElementById("mobile-toggle");
-        const closeBtn = document.getElementById("mobile-close");
-        const mobileLinks = document.querySelectorAll(".mobile-link");
-        function toggleMenu() {
-            mobileMenu.classList.toggle("hidden");
-            mobileMenu.classList.toggle("flex");
-            document.body.style.overflow = mobileMenu.classList.contains("flex") ? "hidden" : "";
-        }
-        if(toggleBtn) toggleBtn.addEventListener("click", toggleMenu);
-        if(closeBtn) closeBtn.addEventListener("click", toggleMenu);
-        mobileLinks.forEach(l => l.addEventListener("click", toggleMenu));
-    </script>
-    <script src="ui-enhancements.js"></script>
+    <script src="ui-animations.js"></script>
 </body>
 </html>

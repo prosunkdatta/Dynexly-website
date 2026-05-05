@@ -1,25 +1,42 @@
-// UI Enhancements & Interactions – Dynexly (2026)
+// ui-animations.js – Dynexly (2026)
+// Replaces all previous animation/interaction scripts.
+// Inspired by numiko.com
+
 document.addEventListener("DOMContentLoaded", () => {
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-  // ── Navigation scroll transparency ──────────────────────
+  // ── NAVIGATION SCROLL (transparent → frosted glass) ───
   const nav = document.querySelector("nav");
   if (nav) {
     const handleScroll = () => {
       if (window.scrollY > 40) {
         nav.classList.add("scrolled-nav");
-        nav.classList.remove("bg-transparent");
       } else {
         nav.classList.remove("scrolled-nav");
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
   }
 
-  // ── Smooth scroll for hash links ────────────────────────
+  // ── SMOOTH HASH SCROLL & MOBILE MENU CLOSE ─────────────
+  function closeMobileMenu() {
+    const mMenu = document.getElementById("mobile-menu");
+    if (!mMenu || !window.gsap) return;
+    gsap.to(mMenu, {
+      xPercent: 100,
+      duration: 0.3,
+      ease: "power2.out",
+      onComplete: () => {
+        mMenu.classList.add("hidden");
+        gsap.set(mMenu, { display: "none" });
+      },
+    });
+    document.body.style.overflow = "";
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       const id = this.getAttribute("href");
@@ -40,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ── Active section tracking ────────────────────────────
+  // ── ACTIVE SECTION HIGHLIGHTING ─────────────────────────
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-link");
   if (sections.length && navLinks.length) {
@@ -53,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
               const href = link.getAttribute("href");
               if (
                 href === "#" + entry.target.id ||
-                href === "index.html#" + entry.target.id
+                (href && href.endsWith("#" + entry.target.id))
               ) {
                 link.classList.add("active");
               }
@@ -66,24 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach((sec) => obs.observe(sec));
   }
 
-  // ── Mobile menu ────────────────────────────────────────
+  // ── MOBILE MENU TOGGLE ─────────────────────────────────
   const mMenu = document.getElementById("mobile-menu");
   const mToggleBtn = document.getElementById("mobile-toggle");
   const cBtn = document.getElementById("mobile-close");
-
-  function closeMobileMenu() {
-    if (!mMenu || !window.gsap) return;
-    gsap.to(mMenu, {
-      xPercent: 100,
-      duration: 0.3,
-      ease: "power2.out",
-      onComplete: () => {
-        mMenu.classList.add("hidden");
-        gsap.set(mMenu, { display: "none" });
-      },
-    });
-    document.body.style.overflow = "";
-  }
 
   function openMobileMenu() {
     if (!mMenu || !window.gsap) return;
@@ -114,7 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Close when a mobile menu link is clicked
     document.querySelectorAll(".mobile-link").forEach((link) => {
       link.addEventListener("click", () => {
         isOpen = false;
@@ -123,11 +125,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── GSAP reveal animations ─────────────────────────────
+  // ── GSAP REVEALS & SCROLLTRIGGER ───────────────────────
   if (window.gsap && window.ScrollTrigger && !prefersReducedMotion) {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero entrance (optional IDs: hero-heading, hero-text, hero-buttons)
+    // Hero text entrance
     const heroHeading = document.getElementById("hero-heading");
     const heroText = document.getElementById("hero-text");
     const heroButtons = document.getElementById("hero-buttons");
@@ -142,44 +144,50 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Highlight word pulse
-    ScrollTrigger.create({
-      trigger: "#home",
-      start: "top top",
-      end: "bottom center",
-      onEnter: () =>
-        gsap.to("#highlight-word", {
-          color: "#A8D8F0",
-          scale: 1.05,
-          textShadow: "0 0 10px rgba(168,216,240,0.5)",
-          duration: 0.5,
-          yoyo: true,
-          repeat: 1,
-        }),
-    });
+    // Word highlight pulse
+    const highlightWord = document.getElementById("highlight-word");
+    if (highlightWord) {
+      ScrollTrigger.create({
+        trigger: "#home",
+        start: "top top",
+        end: "bottom center",
+        onEnter: () =>
+          gsap.to(highlightWord, {
+            color: "#A8D8F0",
+            scale: 1.05,
+            textShadow: "0 0 10px rgba(168,216,240,0.5)",
+            duration: 0.5,
+            yoyo: true,
+            repeat: 1,
+          }),
+      });
+    }
 
-    // Batch reveal for cards
-    ScrollTrigger.batch(".card-reveal", {
-      interval: 0.1,
-      batchMax: 3,
-      onEnter: (batch) =>
-        gsap.fromTo(
-          batch,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.1,
-            overwrite: "auto",
-          }
-        ),
-      start: "top 85%",
-      once: true,
-    });
+    // Card reveals – works for any of these classes
+    ScrollTrigger.batch(
+      ".card-reveal, .glass-card, .anim-fade-up, .anim-card, .team-card",
+      {
+        interval: 0.1,
+        batchMax: 3,
+        onEnter: (batch) =>
+          gsap.fromTo(
+            batch,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power2.out",
+              stagger: 0.1,
+              overwrite: "auto",
+            }
+          ),
+        start: "top 85%",
+        once: true,
+      }
+    );
 
-    // Stats counter
+    // Stats counters
     document.querySelectorAll(".stat-number").forEach((el) => {
       const obj = { val: 0 };
       const tVal = parseInt(el.getAttribute("data-target")) || 30;
@@ -198,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── Leadership card icon rotation ───────────────────────
+  // ── LEADERSHIP ICON ROTATION ────────────────────────────
   const leadCard = document.getElementById("leadership-card-el");
   const leadIcon = document.getElementById("leadership-svg");
   if (leadCard && leadIcon && !prefersReducedMotion) {
